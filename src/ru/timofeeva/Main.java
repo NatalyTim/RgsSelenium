@@ -147,14 +147,12 @@ public class Main {
     }
 
     public static void compareText(String xpath, String expect) throws Exception{
-       WebElement element = (new WebDriverWait(driver,10)
-               .until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))));
-        //element = driver.findElement(By.xpath(xpath));
 
-        //WebElement s1 = driver.findElement(By.xpath(xpath));
+        WebElement s1 = (new WebDriverWait(driver,10))
+               .until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].scrollIntoView()", element);
-        String s2 = element.getText();
+        jse.executeScript("arguments[0].scrollIntoView()", s1);
+        String s2 = s1.getText();
         if (s2.contains(expect)) {
             System.out.println("Исходный текст есть: " + expect);
         } else {
@@ -173,7 +171,8 @@ public class Main {
     }
 
     public static void clickElement(By locator) {
-        driver.findElement(locator).click();
+        (new WebDriverWait(driver,10))
+                .until(ExpectedConditions.elementToBeClickable(locator)).click();
 
     }
 
@@ -190,8 +189,9 @@ public class Main {
     }
 
     public static void scrollToAndClickElement(By locator) {
-        WebElement element;
-        element = driver.findElement(locator);
+
+       WebElement element = (new WebDriverWait(driver,10)
+                .until(ExpectedConditions.elementToBeClickable(locator)));
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView()", element);
         printElement(element);
