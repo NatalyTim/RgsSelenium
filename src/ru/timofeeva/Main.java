@@ -181,6 +181,8 @@ public class Main {
         int reportDay = dateInTwoWeeks.getDayOfMonth();
         if (dateNow.getMonth() != dateInTwoWeeks.getMonth()) {
             nextMonth.click();
+            driver.findElement(By.xpath("//div[contains(@class,'datepicker-days')]/table/tbody/tr/td[@class='day'][contains(text(), " + reportDay + ")]")).click();
+
         } else {
             driver.findElement(By.xpath("//div[contains(@class,'datepicker-days')]/table/tbody/tr/td[@class='day'][contains(text(), " + reportDay + ")]")).click();
         }
