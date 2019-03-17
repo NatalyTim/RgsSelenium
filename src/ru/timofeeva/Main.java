@@ -45,9 +45,8 @@ public class Main {
           //  WebElement element = driver.findElement(By.xpath("//div/span[@class='h1']"));
             compareText("//div/span[@class='h1']", expectString);
 
-           // Thread.sleep(2000);
 
-            //14. Я согласен на обработку данных  - выбрать чекбокс
+            //5.5. Я согласен на обработку данных  - выбрать чекбокс
             System.out.println("5.5 Я согласен на обработку данных  - выбрать чекбокс");
             scrollToAndClickElement(By.xpath("//form[contains(@data-bind,'calculation')]" +
                     "/div[contains(@data-bind,'validationApply')]/adaptive-checkbox/label"));
@@ -134,7 +133,6 @@ public class Main {
             compareText("//div[contains(@data-bind, 'SelectedProgram.Options')]" +
                     "/div[contains(@data-bind, 'Активный')]/div[@class='summary-row']/span[@class='summary-value']/span", "Включен");
 
-            //Thread.sleep(10000);
 
         } catch (Exception e) {
             System.out.println("The following exception was generated:");
